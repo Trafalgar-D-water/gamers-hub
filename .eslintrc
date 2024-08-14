@@ -1,0 +1,14 @@
+{
+    "extends": ["eslint-config-hapi"],
+    "parserOptions": {
+      "ecmaVersion": 9
+    },
+    "rules": {
+      "indent": ["error", 2, { "SwitchCase": 1 }],
+      "hapi/hapi-scope-start": 0,
+      "hapi/hapi-capitalize-modules": 0,
+      "brace-style": 0,
+      "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+    }
+  }
+  
