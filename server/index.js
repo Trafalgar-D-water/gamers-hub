@@ -2,7 +2,9 @@
 const Glue = require('@hapi/glue');
 const manifest = require('./manifest');
 const HapiPino = require('hapi-pino');
-// const mongoose = require('');
+const mongoose = require('mongoose')
+require('dotenv').config()
+const connectToDb = require('./db')
 
 
 exports.deployment = async(start)=>{
@@ -22,12 +24,13 @@ exports.deployment = async(start)=>{
     }
 
     await server.start();
+    connectToDb();
+    
     console.log(`Server running at ${server.info.uri}`);
     return server ;
     }
     catch(err){
-        console.log('Error while starting the server:' , err);
-        
+        console.log('Error while starting the server:' , err);  
     }
     
 }
