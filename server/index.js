@@ -5,7 +5,7 @@ const HapiPino = require('hapi-pino');
 // const mongoose = require('');
 
 
-exports.depliyment = async(start)=>{
+exports.deployment = async(start)=>{
     try{
         console.log('cool');
     const server = await Glue.compose(manifest , {relativeTo : __dirname}) 
@@ -33,5 +33,5 @@ exports.depliyment = async(start)=>{
 }
 
 if(require.main === module){
-    exports.depliyment(true)
+    exports.deployment(true)
 }
