@@ -12,9 +12,9 @@ exports.deployment = async(start)=>{
         console.log('cool');
     const server = await Glue.compose(manifest , {relativeTo : __dirname}) 
 
-    await server.register({
-        plugin : HapiPino,
-    });
+    // await server.register({
+    //     plugin : HapiPino,
+    // });
 
     await server.initialize();
     

@@ -1,7 +1,8 @@
-'use strict'
-const HapiSwagger = require('hapi-swagger');
-const Inert = require('@hapi/inert'); 
-const Vision = require('@hapi/vision');
+"use strict";
+const HapiSwagger = require("hapi-swagger");
+const Inert = require("@hapi/inert");
+const Vision = require("@hapi/vision");
+const users = require("../lib/plugins/users/index");
 
 module.exports = {
   server: {
@@ -15,8 +16,9 @@ module.exports = {
       },
       cors: {
         origin: ["*"],
+        headers: ["Authorization", "Content-Type", "Accept"],
         credentials: true,
-      }
+      },
     },
     debug: {
       log: ["error"],
@@ -25,28 +27,29 @@ module.exports = {
   },
   register: {
     plugins: [
-      Inert, 
+      Inert,
       Vision,
       {
-        plugin : HapiSwagger,
-        options :{
-          info  :{
-            title :`GamerHub Hapi-20 API DOCUMANTATION`,
+        plugin: HapiSwagger,
+        options: {
+          info: {
+            title: `GamerHub Hapi-20 API DOCUMANTATION`,
           },
-          pathPrefixSixe : 2, 
-          basePath :'/api',
-          securityDefinations :{
-            Bearer :{
-              type :'apiKey',
-              name : 'Authorization',
-              in :'header',
-              'x-keyPrefix': 'Bearer'
-            }
+          pathPrefixSize: 2,
+          basePath: "/api",
+          securityDefinitions: {
+            Bearer: {
+              type: "apiKey",
+              name: "Authorization",
+              in: "header",
+              "x-keyPrefix": "Bearer",
+            },
           },
-          security :[{Bearer :[]}],
-          schemes :['https' , 'http']
-        }
+          security: [{ Bearer: [] }],
+          schemes: ["http"],
+        },
       },
-    ]
-  }
+      { plugin: users },
+    ],
+  },
 };
