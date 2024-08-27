@@ -3,7 +3,8 @@ const HapiSwagger = require("hapi-swagger");
 const Inert = require("@hapi/inert");
 const Vision = require("@hapi/vision");
 const users = require("../lib/plugins/users/index");
-
+const auth = require("../lib/plugins/auth/index");
+const team = require("../lib/plugins/team/index");
 module.exports = {
   server: {
     port: process.env.PORT || 3004,
@@ -49,7 +50,10 @@ module.exports = {
           schemes: ["http"],
         },
       },
+
+      { plugin: auth },
       { plugin: users },
+      { plugin: team },
     ],
   },
 };
