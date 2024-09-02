@@ -35,6 +35,7 @@ module.exports = {
         options: {
           info: {
             title: `GamerHub Hapi-20 API DOCUMANTATION`,
+            version: '1.0.0',
           },
           pathPrefixSize: 2,
           basePath: "/api",
