@@ -22,8 +22,8 @@ module.exports = {
       },
     },
     debug: {
-      log: ["error"],
-      request: ["error"],
+      // log: ["error"],
+      // request: ["error"], // this thing acusing the error of log not found 
     },
   },
   register: {
