@@ -17,7 +17,7 @@ module.exports = {
         },
       },
       cors: {
-        origin: ["*"],
+        origin: ["*"],  
         headers: ["Authorization", "Content-Type", "Accept"],
         credentials: true,
       },
