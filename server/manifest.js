@@ -5,6 +5,7 @@ const Vision = require("@hapi/vision");
 const users = require("../lib/plugins/users/index");
 const auth = require("../lib/plugins/auth/index");
 const team = require("../lib/plugins/team/index");
+const profile = require('../lib/plugins/profile/index')
 module.exports = {
   server: {
     port: process.env.PORT || 3004,
@@ -55,6 +56,7 @@ module.exports = {
       { plugin: auth },
       { plugin: users },
       { plugin: team },
+      {plugin : profile},
     ],
   },
 };
