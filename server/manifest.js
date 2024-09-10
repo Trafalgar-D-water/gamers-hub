@@ -6,6 +6,8 @@ const users = require("../lib/plugins/users/index");
 const auth = require("../lib/plugins/auth/index");
 const team = require("../lib/plugins/team/index");
 const profile = require('../lib/plugins/profile/index')
+const socket = require('../lib/plugins/socket/index')
+const friends = require('../lib/plugins/friends/index')
 module.exports = {
   server: {
     port: process.env.PORT || 3004,
@@ -18,7 +20,7 @@ module.exports = {
       },
       cors: {
         origin: ["*"],  
-        headers: ["Authorization", "Content-Type", "Accept"],
+        headers: ["Authorization", "Content-Type", "Accept"], 
         credentials: true,
       },
     },
@@ -57,6 +59,8 @@ module.exports = {
       { plugin: users },
       { plugin: team },
       {plugin : profile},
+      {plugin: socket},
+      {plugin : friends}
     ],
   },
 };
