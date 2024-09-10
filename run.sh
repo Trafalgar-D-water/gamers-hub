@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cd /mnt/d/gamers-hub/gameer-hub-backend/server
+cd ~/Desktop/workshop/gamer-backend/gamers-hub/server/
 
-npm install
+# npm install
 
 
 node index.js
