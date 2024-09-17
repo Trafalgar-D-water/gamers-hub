@@ -28,3 +28,20 @@
 // │   └── ...                   # Other utilities
 // │
 // └── server.js                 # Main server entry point
+
+const filteredDonations = csv_data.reduce((acc, data) => {
+    // Get all keys from the data object
+    const dataKeys = Object.keys(data);
+  
+    // Check if all required fields are present directly in the data object
+    const isValid = requiredFields.every(field => dataKeys.includes(field));
+  
+    // If valid, add extra fields and push to the result array
+    if (isValid) {
+      data.createdBy = profile_id;
+      data.createdByName = profileName;
+      acc.push(data);
+    }
+  
+    return acc;
+  }, []);
