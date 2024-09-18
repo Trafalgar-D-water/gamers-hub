@@ -6,8 +6,8 @@ const users = require("../lib/plugins/users/index");
 const auth = require("../lib/plugins/auth/index");
 const team = require("../lib/plugins/team/index");
 const profile = require('../lib/plugins/profile/index')
-const socket = require('../lib/plugins/socket/index')
-const friends = require('../lib/plugins/friends/index');
+// const socket = require('../lib/plugins/socket/index')
+// const friends = require('../lib/plugins/friends/index');
 const hapiAuthorization = require("hapi-authorization");
 module.exports = {
   server: {
@@ -67,8 +67,8 @@ module.exports = {
       { plugin: users },
       { plugin: team },
       {plugin : profile},
-      {plugin: socket},
-      {plugin : friends}
+      // {plugin: socket},
+      // {plugin : friends}
     ],
   },
   // ext: {
