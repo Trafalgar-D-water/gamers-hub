@@ -6,8 +6,10 @@ const users = require("../lib/plugins/users/index");
 const auth = require("../lib/plugins/auth/index");
 const team = require("../lib/plugins/team/index");
 const profile = require('../lib/plugins/profile/index')
-const socket = require('../lib/plugins/socket/index')
-const friends = require('../lib/plugins/friends/index')
+// const socket = require('../lib/plugins/socket/index')
+// const friends = require('../lib/plugins/friends/index');
+const Guild = require('../lib/plugins/Guild/index')
+const hapiAuthorization = require("hapi-authorization");
 module.exports = {
   server: {
     port: process.env.PORT || 3004,
@@ -20,7 +22,8 @@ module.exports = {
       },
       cors: {
         origin: ["*"],  
-        headers: ["Authorization", "Content-Type", "Accept"], 
+        headers: ["Authorization", "Content-Type", "Accept" ,'If-None-Match'] , 
+        additionalHeaders: ['x-requested-with'] ,
         credentials: true,
       },
     },
@@ -54,13 +57,38 @@ module.exports = {
           schemes: ["http"],
         },
       },
+      {
+        plugin : hapiAuthorization,
+        options : {
+          roles :['superAdmin' , 'admin' , 'mod' , 'user']
+        }
+      },
 
       { plugin: auth },
       { plugin: users },
       { plugin: team },
       {plugin : profile},
-      {plugin: socket},
-      {plugin : friends}
+      {plugin : Guild},
+      
+      // {plugin: socket},
+      // {plugin : friends} 
     ],
   },
+  // ext: {
+  //   onPreHandler: (request, h) => {
+  //     const userRole = request.auth.credentials.role; // Ensure this is set in your JWT validation
+
+  //     // Define protected routes
+  //     const protectedRoutes = ['/admin', '/moderator']; // Adjust protected routes as needed
+
+  //     if (protectedRoutes.includes(request.path) && userRole !== 'superAdmin') {
+  //       return h.response({ message: 'Access denied' }).code(403);
+  //     }
+
+  //     return h.continue;
+  //   }
+  // }
 };
+
+
+
