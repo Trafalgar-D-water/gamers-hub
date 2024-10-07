@@ -21,16 +21,16 @@ module.exports = {
         },
       },
       cors: {
-        origin: ["*"],  
+        origin:['*'],  
         headers: ["Authorization", "Content-Type", "Accept" ,'If-None-Match'] , 
         additionalHeaders: ['x-requested-with'] ,
         credentials: true,
       },
     },
-    debug: {
-      // log: ["error"],
-      // request: ["error"], // this thing acusing the error of log not found 
-    },
+    // debug: {
+    //   log: ["error"],
+    //   request: ["error"], // this thing acusing the error of log not found 
+    // },
   },
   register: {
     plugins: [
