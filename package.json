@@ -12,6 +12,9 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@hapi/glue": "^9.0.1",
+    "@hapi/good": "^9.0.1",
+    "@hapi/good-console": "^9.0.1",
+    "@hapi/good-squeeze": "^6.0.0",
     "@hapi/hapi": "^21.3.10",
     "@hapi/inert": "^7.1.0",
     "@hapi/jwt": "^3.2.0",
@@ -29,7 +32,7 @@
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4",
     "redis": "^4.7.0",
-    "socket.io": "^4.7.5",
+    "socket.io": "^4.8.0",
     "uuid": "^10.0.0"
   }
 }
